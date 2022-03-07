@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+@import './variables.scss';
+@import './mixins.scss';
+@import './inheritances.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+}
+
+html {
+  font-family: 'Helvetica Neue', 'Roboto', sans-serif;
+}
+
+body {
+  max-width: 1920px;
+  margin: 0 auto;
+}

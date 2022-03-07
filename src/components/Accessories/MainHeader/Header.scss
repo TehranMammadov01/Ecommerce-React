@@ -1,0 +1,23 @@
+@import '../../../styles/styles.scss';
+
+.main-header {
+    @extend %displayFlexStyles;
+    padding: 25px 30%;
+
+    p {
+        font-size: $secondaryTitleFontSize;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 920px) {
+    .main-header {
+        padding: 25px 20%;
+    }
+}
+
+@media only screen and (max-width: 486px) {
+    .main-header {
+        display: none;
+    }
+}

@@ -1,11 +1,13 @@
 import React from 'react';
-import card from './assets/women-collection.png';
+import Accessories from './components/Accessories/Accessories';
+import Nav from './components/Navbar/Nav';
 
 const App = () => {
     return (
-        <div>
-            <img src={card} alt="card" />
-        </div>
+        <>
+            <Nav />
+            <Accessories />
+        </>
     )
 }
 

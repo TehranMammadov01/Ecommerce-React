@@ -1,0 +1,164 @@
+@import '../../../styles/styles.scss';
+
+.woman-collection, .man-collection {
+    @extend %displayFlexStyles;
+    padding: 74px $mainPaddingRightAndLeft 0 $mainPaddingRightAndLeft;
+
+    p {
+        font-size: $mainTitleFontSize;
+        margin-bottom: 12px;
+    }
+
+    &__container, &__accessories {
+        width: 49%;
+
+        &__image-item {
+            width: 100%;
+
+            img {
+                width: 100%;
+                margin-bottom: -4px;
+            }
+        }
+    }
+
+    .show-collection-item {
+        position: relative;
+
+        .more-info-button {
+            position: absolute;
+            width: 45%;
+            left: 27.5%;
+            bottom: 20px;
+            z-index: 900;
+            display: none;
+
+            button {
+                padding: 10px 0;
+                width: 100%;
+                background-color: $blackColor;
+                color: white;
+                border: none;
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+.woman-collection__accessories p, .man-collection__container p {
+    text-align: end;
+} 
+
+.collection-bottom-line {
+    @extend %bigLineStyles;
+}
+
+.collection-bottom-line-mobile {
+    @extend %bigLineStyles;
+    display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+    .woman-collection, .man-collection {
+        p {
+            font-size: $secondaryTitleFontSize;
+        }
+        .show-collection-item {
+            .more-info-button {
+                width: 50%;
+                left: 25%;
+
+                button {
+                    font-size: 17px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .woman-collection, .man-collection {
+        .show-collection-item {
+            .more-info-button {
+                width: 60%;
+                left: 20%;
+
+                button {
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 666px) {
+    .woman-collection, .man-collection {
+        p {
+            font-size: 16px;
+        }
+    }
+}
+
+@media only screen and (max-width: 590px) {
+    .woman-collection, .man-collection {
+        .show-collection-item {
+            .more-info-button {
+                width: 70%;
+                left: 15%;
+                bottom: 15px;
+
+                button {
+                    font-size: 14px;
+                    padding: 7px 0;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 486px) {
+    .woman-collection, .man-collection {
+        padding: 0;
+        flex-direction: column;
+
+        &__container, &__accessories {
+            width: 100%;
+            margin-top: 70px;
+        }
+        p {
+            margin: 0 $mainPaddingRightAndLeftMobile;
+            margin-bottom: 60px; 
+        }
+        .show-collection-item {
+            position: relative;
+
+            .more-info-button {
+                width: 100%;
+                left: 0;
+                bottom: 0;
+                top: -38px;
+                display: block;
+
+                button {
+                    position: relative;
+                    padding: 10px 0;
+                    width: 100%;
+                    font-size: 16px;
+                    display: block;
+                }
+            }
+        }
+    }
+    .man-collection {
+        flex-direction: column-reverse;
+    }
+    .woman-collection__accessories p, .man-collection__container p {
+        text-align: start;
+    }
+    .collection-bottom-line {
+        display: none;
+    }
+    .collection-bottom-line-mobile {
+        display: block;
+    }
+}

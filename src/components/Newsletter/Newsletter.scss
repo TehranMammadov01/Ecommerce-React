@@ -1,0 +1,39 @@
+@import '../../styles/styles.scss';
+
+.newsletter-container {
+    background-color: $newsLetterBackgroundColor;
+    padding: 50px 0 100px 0;
+
+    &__div {
+        width: 40%;
+        margin: 0 auto;
+        border-bottom: 1px solid $blackColor;
+
+        &__header {
+            font-size: $mainTitleFontSize;
+            margin-bottom: 45px;
+            text-align: center
+        }
+
+        &__email {
+            @extend %displayFlexStyles;
+            padding: 0 20px 15px 20px;
+
+            p {
+                color: $emailColor;
+            }
+
+            &__arrow {
+                width: 20px;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.newsletter-top-line {
+    @extend %bigLineStyles;
+}

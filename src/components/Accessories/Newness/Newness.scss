@@ -1,0 +1,23 @@
+@import '../../../styles/styles.scss';
+
+.newness-section {
+    padding: 70px $mainPaddingRightAndLeft 80px $mainPaddingRightAndLeft;
+
+    p {
+        font-size: $mainTitleFontSize;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    &__image-container {
+        @extend %displayFlexStyles;
+
+        div {
+            width: 25%;
+    
+            img {
+                width: 100%;
+            }
+        }
+    }
+}

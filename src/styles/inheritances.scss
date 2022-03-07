@@ -1,0 +1,11 @@
+%displayFlexStyles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+%bigLineStyles {
+    height: 2px;
+    width: 100%;
+    background-color: $blackColor;
+}
