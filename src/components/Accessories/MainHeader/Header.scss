@@ -3,7 +3,6 @@
 .main-header {
     @extend %displayFlexStyles;
     padding: 25px 30%;
-
     p {
         font-size: $secondaryTitleFontSize;
         cursor: pointer;
