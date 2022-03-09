@@ -1,23 +1,146 @@
 @import '../../../styles/styles.scss';
 
 .main-header {
-    @extend %displayFlexStyles;
-    padding: 25px 30%;
+    position: relative;
+
+    &__title {
+        @extend %displayFlexStyles;
+        padding: 25px 30%;
+
+        p {
+            position: relative;
+            font-size: $secondaryTitleFontSize;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        p::after {
+            content: '';
+            position: absolute;
+            background: $hoverLineColor;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            width: 100%;
+            transform: scale(0, 1);
+            transition: transform 0.2s linear;
+        }
+        p:hover::after {
+            transform: scale(1, 1)
+        }
+    }
+
+    &__subtitle {
+        display: none;
+        justify-content: space-between;
+        position: absolute;
+        background: white;
+        top: 51px;
+        z-index: 1;
+        width: 81.2%;
+        left: $mainPaddingRightAndLeft;
+        padding-top: 20px;
+        animation: slide-down 0.2s ease-out forwards;
+        transition: all 1s linear;
     
-    p {
-        font-size: $secondaryTitleFontSize;
-        cursor: pointer;
+        &__title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        &__items {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+
+            p {
+                position: relative;
+                cursor: pointer;
+                margin-bottom: 10px;
+                color: gray;
+                transition: color 0.2s linear;
+            }
+            p:last-child {
+                margin-bottom: 30px;
+            }
+            p:hover {
+                color: $blackColor;
+            }
+            p::after {
+                content: '';
+                position: absolute;
+                background: $hoverLineColor;
+                bottom: 0;
+                left: 0;
+                height: 2px;
+                width: 100%;
+                transform: scale(0, 1);
+                transition: transform 0.2s linear;
+            }
+            p:hover::after {
+                transform: scale(1, 1)
+            }
+        }
+    }
+
+    @keyframes slide-down {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
     }
 }
 
 @media only screen and (max-width: 920px) {
     .main-header {
-        padding: 25px 20%;
+        &__title {
+            padding: 25px 20%;
+
+            p {
+                font-size: 18px;
+            }
+
+        }
+        &__subtitle {
+            top: 49px;
+            animation: slide-mobile-down 0.2s ease-out forwards;
+
+            &__title {
+                font-size: 17px;
+            }
+
+            &__items {
+                p {
+                    font-size: 15px;
+                }
+            }
+
+            &__content:not(:last-child) {
+                margin-right: 30px;
+            }
+        }
+    }
+
+    @keyframes slide-mobile-down {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
     }
 }
 
 @media only screen and (max-width: 486px) {
     .main-header {
-        display: none;
+        &__title {
+            display: none;
+        }
     }
 }

@@ -10,14 +10,16 @@
     }
 
     &__container, &__accessories {
+        position: relative;
         width: 49%;
 
         &__image-item {
             width: 100%;
+            margin-bottom: -2px;
 
             img {
                 width: 100%;
-                margin-bottom: -4px;
+                margin-bottom: -2px; 
             }
         }
     }
@@ -30,7 +32,7 @@
             width: 45%;
             left: 27.5%;
             bottom: 20px;
-            z-index: 900;
+            z-index: 1;
             display: none;
 
             button {
@@ -40,17 +42,86 @@
                 color: white;
                 border: none;
                 font-size: 18px;
+                cursor: pointer;
             }
+        }
+    }
+
+    .show-collection-item:hover .more-info-button {
+        display: block;
+    }
+
+    .show-collection-item-left::after,
+    .show-collection-item-right::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: -2px;
+        height: 0;
+        width: 0;
+        background: transparent;
+        border-left: 2px solid transparent;
+        border-top: 2px solid transparent;
+        border-right: 2px solid transparent;
+    }
+
+    .show-collection-item-left:hover::after {
+        animation: show-border-after 0.46s linear forwards;
+    }
+
+    .show-collection-item-right:hover::after {
+        animation: show-border-after 0.15s linear 0.3s forwards;
+    }
+
+    @keyframes show-border-after {
+        0% {
+            width: 0;
+            height: 0;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            border-left-color: black;
+        }
+        33% {
+            width: 0;
+            height: 100%;
+            border-top-color: black;
+            border-right-color: transparent;
+            border-left-color: black;
+        }
+        66% {
+            width: 100%;
+            height: 100%;
+            border-top-color: black;
+            border-right-color: transparent;
+            border-left-color: black;
+        }
+        100% {
+            width: 100%;
+            height: 100%;
+            border-top-color: black;
+            border-right-color: black;
+            border-left-color: black;
         }
     }
 }
 
 .woman-collection__accessories p, .man-collection__container p {
     text-align: end;
-} 
+}
 
 .collection-bottom-line {
-    @extend %bigLineStyles;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    &__visible {
+        @extend %bigLineStyles;
+    }
+
+    &__hidden {
+        @extend %bigHiddenLineStyles;
+        transition: all 0.5s ease-in;
+    }
 }
 
 .collection-bottom-line-mobile {
@@ -72,6 +143,14 @@
                     font-size: 17px;
                 }
             }
+        }
+    }
+}
+
+@media only screen and (max-width: 920px) {
+    .woman-collection, .man-collection {
+        p {
+            font-size: 18px;
         }
     }
 }

@@ -9,3 +9,9 @@
     width: 100%;
     background-color: $blackColor;
 }
+
+%bigHiddenLineStyles {
+    height: 2px;
+    width: 0%;
+    background-color: $blackColor;
+}
