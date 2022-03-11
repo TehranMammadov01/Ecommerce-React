@@ -12,7 +12,7 @@ const MainAllProducts = () => {
             {/* <VideoItem /> */}
             <Collection />
             <Newness />
-            {/* <Newsletter /> */}
+            <Newsletter />
         </>
     )
 }

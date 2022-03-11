@@ -1,0 +1,35 @@
+@import '../../styles/styles.scss';
+
+.policy-container {
+    padding: 20px 0 15px 0;
+    border-top: 2px solid $blackColor;
+    p {
+        font-size: 15px;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .policy-container {
+        p {
+            font-size: 14px;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .policy-container {
+        p {
+            font-size: 13px;
+        }
+    }
+}
+
+@media only screen and (max-width: 486px) {
+    .policy-container {
+        padding: 25px 0 20px 0;
+        p {
+            font-size: 12px;
+        }
+    }
+}
