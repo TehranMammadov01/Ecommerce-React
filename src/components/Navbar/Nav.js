@@ -5,6 +5,7 @@ import menuIcon from '../../assets/images/menu.png';
 import cancelIcon from '../../assets/images/cancel.png';
 import searchIcon from '../../assets/images/search.png';
 import rightArrow from '../../assets/images/right-arrow.png';
+import { Link } from 'react-router-dom';
 
 const Nav = () => {
     const [menuMobileOpen, setMenuMobileOpen] = useState(true);
@@ -22,18 +23,24 @@ const Nav = () => {
                     <h1>BALENCIAGA</h1>
                 </div>
                 <div className='navbar-container__list' ref={navbarResponsiveRef} >
-                    <div className='navbar-container__list__item'>
-                        <p>ALL</p>
-                        <div className='navbar-container__list__item__mobile-right-arrow'><img src={rightArrow} alt="" /></div>
-                    </div>
-                    <div className='navbar-container__list__item'>
-                        <p>WOMEN</p>
-                        <div className='navbar-container__list__item__mobile-right-arrow'><img src={rightArrow} alt="" /></div>
-                    </div>
-                    <div className='navbar-container__list__item'>
-                        <p>MEN</p>
-                        <div className='navbar-container__list__item__mobile-right-arrow'><img src={rightArrow} alt="" /></div>
-                    </div>
+                    <Link to="/">
+                        <div className='navbar-container__list__item'>
+                            <p>ALL</p>
+                            <div className='navbar-container__list__item__mobile-right-arrow'><img src={rightArrow} alt="" /></div>
+                        </div>
+                    </Link>
+                    <Link to="/twistedshirt">
+                        <div className='navbar-container__list__item'>
+                            <p>WOMEN</p>
+                            <div className='navbar-container__list__item__mobile-right-arrow'><img src={rightArrow} alt="" /></div>
+                        </div>
+                    </Link>
+                    <Link to="/shirts">
+                        <div className='navbar-container__list__item'>
+                            <p>MEN</p>
+                            <div className='navbar-container__list__item__mobile-right-arrow'><img src={rightArrow} alt="" /></div>
+                        </div>
+                    </Link>
                     <div className='navbar-container__list__item'>
                         <p>SEARCH</p>
                         <div className='navbar-container__list__item__mobile-right-arrow'><img src={rightArrow} alt="" /></div>

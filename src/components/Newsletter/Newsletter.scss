@@ -34,10 +34,6 @@
     }
 }
 
-.newsletter-top-line {
-    @extend %bigLineStyles;
-}
-
 @media only screen and (max-width: 1024px) {
     .newsletter-container {
         &__div {

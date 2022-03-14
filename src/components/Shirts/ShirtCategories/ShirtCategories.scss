@@ -1,0 +1,313 @@
+@import '../../../styles/styles.scss';
+
+.shirts-container {
+    padding: 0 $mainPaddingRightAndLeft 50px $mainPaddingRightAndLeft;
+
+    &__section {
+        display: flex;
+        flex-wrap: wrap;
+
+        &__part {
+            position: relative;
+            margin-bottom: 130px;
+            width: 26%;
+
+            &__image {
+                width: 100%;
+                height: 500px;
+                
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .hover-img {
+                    display: none;
+                    animation: image-visible 0.3s linear forwards;
+                }
+
+                .default-img {
+                    display: block;
+                }
+            }
+
+            &__description {
+                position: absolute;
+                bottom: 10px;
+                font-size: 14px;
+                color: black;
+                transition: all 0.3s linear;
+                width: 100%;
+                text-align: center;
+                padding: 0 10px;
+            }
+
+            &__sizes {
+                display: none;
+                justify-content: space-between;
+                padding: 45px 24% 0 24%;
+                animation: slide-sizes 0.3s ease-out forwards;
+
+                span {
+                    font-size: 14px;
+                    padding: 5px 5px;
+                    color: black;
+                    cursor: pointer;
+                }
+            }
+
+            &:hover .hover-img {
+                display: block;
+                border: 2px solid black;
+            }
+
+            &:hover .default-img {
+                display: none;
+            }
+
+            &:hover &__description {
+                bottom: -30px;
+            }
+
+            &:hover &__sizes {
+                display: flex;
+            }
+
+            @keyframes slide-sizes {
+                from {
+                  opacity: 0;
+                  transform: translateY(-50px);
+                }
+                to {
+                  opacity: 1;
+                  transform: translateY(0);
+                }
+            }
+            @keyframes image-visible {
+                from {
+                  transform: scale(0.95);
+                }
+                to {
+                  transform: scale(1);
+                }
+            }
+        }
+
+        #part-3, #part-4, #part-8 {
+            width: 48%;
+        }
+
+        #part-1:hover, #part-2:hover, #part-5:hover, 
+        #part-6:hover, #part-7:hover, #part-9:hover {
+            width: 48%;
+        }
+    }
+}
+
+.more-info-button {
+    width: 20%;
+    margin: 0 auto 80px auto;
+
+    button {
+        padding: 10px 0;
+        width: 100%;
+        background: $blackColor;
+        color: white;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    .shirts-container {
+        &__section__part__image {
+            height: 400px;
+        }
+        &__section__part {
+            margin-bottom: 110px;
+            &:hover &__description {
+                bottom: 30px;
+            }
+        }
+        &__section__part__sizes {
+            animation: slide-sizes-1400px 0.3s ease-out forwards;
+        }
+
+        @keyframes slide-sizes-1400px {
+            from {
+              opacity: 0;
+              transform: translateY(10px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .shirts-container {
+        &__section__part {
+            margin-bottom: 100px;
+
+            &:hover &__description {
+                bottom: 20px;
+            }
+            &__image {
+                height: 300px;
+            }
+            &__description {
+                font-size: 13px;
+            }
+            &__sizes {
+                padding: 45px 15% 0 15%;
+                animation: slide-sizes-1024px 0.3s ease-out forwards;
+            }
+            @keyframes slide-sizes-1024px {
+                from {
+                  opacity: 0;
+                  transform: translateY(10px);
+                }
+                to {
+                  opacity: 1;
+                  transform: translateY(15px);
+                }
+            }
+        }
+    }
+    .more-info-button {
+        width: 30%;
+
+        button {
+            font-size: 17px;
+        }
+    }
+}
+
+@media only screen and (max-width: 920px) {
+    .shirts-container {
+        &__section__part__image {
+            height: 250px;
+        }
+        &__section__part__description {
+            font-size: 12px;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .shirts-container {
+        &__section__part {
+            margin-bottom: 70px;
+            &:hover &__description {
+                bottom: 10px;
+            }
+            &__image {
+                height: 200px;
+            }
+            &__description {
+                font-size: 10px;
+                bottom: 0;
+            }
+            &__sizes {
+                padding: 25px 15% 0 15%;
+                span {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    .more-info-button {
+        width: 35%;
+
+        button {
+            font-size: 16px;
+        }
+    }
+}
+
+@media only screen and (max-width: 666px) {
+    .shirts-container {
+        &__section__part__sizes {
+            padding: 20px 5% 0 5%;
+        }
+    }
+}
+
+@media only screen and (max-width: 590px) {
+    .more-info-button {
+        width: 40%;
+
+        button {
+            font-size: 15px;
+            padding: 7px 0;
+        }
+    }
+}
+
+@media only screen and (max-width: 486px) {
+    .shirts-container {
+        padding: 0 0 10px 0;
+        &__section {
+            flex-direction: column;
+            &__part {
+                width: 100%;
+                &__image {
+                    height: 450px;
+                    
+                    img {
+                        border-top: 2px solid black;
+                        border-bottom: 2px solid black;
+                    }
+                }
+                &__description {
+                    position: relative;
+                    margin-top: 30px;
+                    font-size: 16px;
+                }
+                &__description:not(:hover) {
+                    bottom: 10px;
+                }
+                &__sizes {
+                    display: flex;
+                    animation: none;
+                    text-align: center;
+                    padding: 5px 10% 0 10%;
+                    span {
+                        font-size: 16px;
+                    }
+                }
+                &:hover .hover-img {
+                    border-top: 2px solid black;
+                    border-bottom: 2px solid black;
+                    border-left: none;
+                    border-right: none;
+                }
+            }
+            #part-3, #part-4, #part-8 {
+                width: 100%;
+            }
+            #part-1:hover, #part-2:hover, #part-5:hover, 
+            #part-6:hover, #part-7:hover, #part-9:hover {
+                width: 100%;
+            }
+        }
+    }
+    .more-info-button {
+        width: 100%;
+
+        button {
+            font-size: 16px;
+            padding: 10px 0;
+        }
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .shirts-container__section__part__image {
+        height: 350px;
+    }
+}

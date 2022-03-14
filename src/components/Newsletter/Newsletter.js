@@ -5,7 +5,6 @@ import arrow from '../../assets/images/arrow.png';
 const Newsletter = () => {
     return (
         <>
-            <div className='newsletter-top-line'></div>
             <div className='newsletter-container'>
                 <div className='newsletter-container__div'>
                     <p className='newsletter-container__div__header'>NEWSLETTER</p>

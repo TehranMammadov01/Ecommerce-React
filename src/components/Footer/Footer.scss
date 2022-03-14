@@ -1,0 +1,92 @@
+@import '../../styles/styles.scss';
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 55px $mainPaddingRightAndLeft 40px $mainPaddingRightAndLeft;
+
+    &__element {
+        h1 {
+            font-size: 18px;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        div {
+            p {
+                color: $footerSubItemsColor;
+                margin-bottom: 20px;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 920px) {
+    .footer {
+        &__element {
+            h1 {
+                font-size: 17px;
+            }
+            div {
+                p {
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+    
+}
+
+@media only screen and (max-width: 920px) {
+    .footer {
+        flex-wrap: wrap-reverse;
+
+        &__element {
+            width: 50%;
+
+            h1 {
+                font-size: 16px;
+            }
+            div {
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+    } 
+}
+
+@media only screen and (max-width: 486px) {
+    .footer {
+        flex-direction: column;
+        padding: 30px $mainPaddingRightAndLeftMobile 30px $mainPaddingRightAndLeftMobile;
+
+        &__element {
+            width: 100%;
+
+            h1 {
+                text-align: center;
+                margin: 10px 0;
+            }
+            div {
+                padding-left: 25%;
+                p {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    } 
+}
+
+@media only screen and (max-width: 380px) {
+    .footer {
+        &__element {
+            h1 {
+                margin-bottom: 14px;
+            }
+            div {
+                padding-left: 20%;
+            }
+        }
+    }
+}

@@ -1,0 +1,222 @@
+@import '../../../styles/styles.scss';
+
+.details-shirt {
+    display: flex;
+    padding: 65px $mainPaddingRightAndLeft 0 $mainPaddingRightAndLeft;
+
+    &__lines {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 130px 60px 0 30px;
+
+        button {
+            width: 4px;
+            height: 50px;
+            background: #C4C4C4;
+            border: none;
+            outline: none;
+            margin-bottom: 10px;
+            &:first-child {
+                width: 8px;
+                height: 120px;
+                background: $blackColor;
+            }
+        }
+    }
+    &__images {
+        width: 50%;
+        margin-right: 50px;
+
+        &__part-1 {
+            width: 100%;
+            img {
+                width: 100%;
+            }
+        }
+        &__part-2, &__part-3 {
+            display: flex;
+            margin-top: -4px;
+
+            div {
+                width: 50%;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    &__elements {
+        margin-left: auto;
+        width: 500px;
+        padding-top: 50px;
+        &__headers {
+            h1 {
+                font-weight: 700;
+                font-size: 18px;
+            }
+            p {
+                font-size: 14px;
+                margin: 14px 0 50px 0;
+            }
+        }
+        &__choices {
+            display: flex;
+            align-items: flex-start;
+
+            &__colors {
+                font-size: 16px;
+                p {
+                    margin-bottom: 10px;
+                }
+            }
+
+            &__sizes {
+                font-size: 16px;
+                margin-left: 65px;
+                margin-right: 50px;
+                p {
+                    margin-bottom: 10px;
+                }
+                span {
+                    font-weight: 500;
+                }
+            }
+            &__guide {
+                font-size: 14px;
+                padding: 1px 0 3px 0;
+                border-bottom: 2px solid $hoverLineColor;
+            }
+        }
+        &__add-buttons {
+            margin: 70px 0 75px 0;
+            display: flex;
+            align-items: center;
+            border: 2px solid black;
+            &__bag {
+                width: 54%;
+                button {
+                    cursor: pointer;
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    background: $blackColor;
+                    color: white;
+                    font-size: 18px;
+                    padding: 12px 0;
+                }
+            }
+            &__wishlist {
+                width: 46%;
+                button {
+                    cursor: pointer;
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    background: white;
+                    color: $blackColor;
+                    font-size: 16px;
+                    padding: 12px 0;
+                }
+            }
+        }
+        &__products {
+            &__all-details {
+                margin-bottom: 25px;
+                &__header {
+                    @extend %displayFlexStyles;
+                    border-bottom: 2px solid $blackColor;
+                    padding: 5px 0;
+                    p {
+                        font-size: 16px;
+                    }
+                    div {
+                        @extend %displayFlexStyles;
+                        width: 10px;
+                        img {
+                            width: 100%;
+                        }
+                        .plusIcon {
+                            display: block;
+                        }
+                        .minusIcon {
+                            display: none;
+                        }
+                    }
+                }
+                &__subitems {
+                    padding: 20px 0 20px 0;
+                    display: block;
+
+                    &__descriptions {
+                        p {
+                            font-size: 14px;
+                            color: $blackColor;
+                            opacity: 0.6;
+                            margin-bottom: 5px;
+                        }
+                    }
+                    &__material {
+                        display: flex;
+                        margin-top: 35px;
+                        &__names {
+                            p {
+                                font-size: 14px;
+                                opacity: 0.6;
+                                &:first-child {
+                                    margin-bottom: 15px;
+                                }
+                            }
+                        }
+                        &__values {
+                            margin-left: 10px;
+                            p {
+                                font-size: 14px;
+                                font-weight: 500;
+                                &:first-child {
+                                    margin-bottom: 14px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1770px) {
+    .details-shirt {
+        &__elements {
+            width: 450px;
+        }
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    .details-shirt {
+        &__elements {
+            width: 400px;
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .details-shirt {
+        &__lines {
+            padding: 70px 30px 0 20px;
+            button {
+                height: 40px;
+                &:first-child {
+                    height: 80px;
+                }
+            }
+        }
+        &__images {
+            width: 40%;
+        }
+        &__elements {
+            width: 350px;
+        }
+    }
+}

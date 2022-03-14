@@ -1,0 +1,65 @@
+@import '../../../styles/styles.scss';
+
+.fashion-section {
+    @extend %displayFlexStyles;
+    padding: 65px $mainPaddingRightAndLeft 80px $mainPaddingRightAndLeft;
+
+    p {
+        font-size: 40px;
+        line-height: 38px;
+        font-weight: 700;
+        transform: rotateZ(-90deg);
+        margin-left: -50px;
+        border-bottom: 2px solid $blackColor;
+    }
+
+    &__image-container {
+        width: 90%;
+
+        img {
+            width: 100%;
+
+            &:last-child {
+                display: none;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .fashion-section {
+        p {
+            font-size: 30px;
+            line-height: 28px;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .fashion-section {
+        p {
+            font-size: 25px;
+            line-height: 23px;
+        }
+    }
+}
+
+@media only screen and (max-width: 486px) {
+    .fashion-section {
+        padding: 50px $mainPaddingRightAndLeftMobile;
+        p {
+            margin-left: -35px;
+        }
+        &__image-container {
+            
+            img {
+                &:first-child {
+                    display: none;
+                }
+                &:last-child {
+                    display: block;
+                }
+            }
+        }
+    }
+}

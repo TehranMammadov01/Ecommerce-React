@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './Header.scss';
 
 const Header = () => {
@@ -30,9 +31,9 @@ const Header = () => {
     return (
         <div className='main-header'>
             <div className='main-header__title'>
-                <p onMouseOver={hoverSubtitleMen} onMouseOut={hoverOutSubtitleMen}>MEN</p>
-                <p onMouseOver={hoverSubtitleWomen} onMouseOut={hoverOutSubtitleWomen}>WOMEN</p>
-                <p onMouseOver={hoverSubtitleAll} onMouseOut={hoverOutSubtitleAll}>ALL</p>
+                <Link to="/shirts"><p onMouseOver={hoverSubtitleMen} onMouseOut={hoverOutSubtitleMen}>MEN</p></Link>
+                <Link to="/twistedshirt"><p onMouseOver={hoverSubtitleWomen} onMouseOut={hoverOutSubtitleWomen}>WOMEN</p></Link>
+                <Link to="/"><p onMouseOver={hoverSubtitleAll} onMouseOut={hoverOutSubtitleAll}>ALL</p></Link>
             </div>
             <div className='main-header__subtitle' ref={subtitleHeaderMen} onMouseOver={hoverSubtitleMen} onMouseOut={hoverOutSubtitleMen}>
                 <div className='main-header__subtitle__content'>

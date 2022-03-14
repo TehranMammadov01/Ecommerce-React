@@ -12,6 +12,7 @@
             font-size: $secondaryTitleFontSize;
             cursor: pointer;
             border: 1px solid transparent;
+            color: $blackColor;
         }
         p::after {
             content: '';
