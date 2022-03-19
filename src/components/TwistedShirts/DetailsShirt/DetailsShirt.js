@@ -259,10 +259,10 @@ const DetailsShirt = () => {
             linesBehavior.current.style.position = "static";
             linesBehavior.current.style.marginTop = "90px";
             imagesBehavior.current.style.marginLeft = "0px";
-        } else if (window.scrollY > 45 && window.scrollY < 450 && windowWidth > 250) {
+        } else if (window.scrollY > 45 && window.scrollY < 450 && windowWidth < 486) {
             linesBehavior.current.style.position = "fixed";
-            linesBehavior.current.style.top = "75px";
-        } else if (window.scrollY > 450 && windowWidth > 250) {
+            linesBehavior.current.style.top = "70px";
+        } else if (window.scrollY > 450 && windowWidth < 486) {
             linesBehavior.current.style.position = "absolute";
             linesBehavior.current.style.top = "450px";
         } else if (window.scrollY < 110 && windowWidth > 486) {
@@ -271,8 +271,9 @@ const DetailsShirt = () => {
             linesBehavior.current.style.position = "static";
             linesBehavior.current.style.top = "65px";
             imagesBehavior.current.style.marginLeft = "0px";
-        } else if (window.scrollY < 45 && windowWidth > 250 && windowWidth < 486) {
+        } else if (window.scrollY < 45 && windowWidth < 486) {
             linesBehavior.current.style.position = "absolute";
+            linesBehavior.current.style.top = "45px";
         }
     }
 
@@ -308,7 +309,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.background = "black";
         }
 
-        if (scrolling < 180 && windowWidth > 1500) {
+        if (scrolling < 180 && windowWidth < 1700 && windowWidth > 1500) {
             shirtLine1.current.style.width = "8px";
             shirtLine1.current.style.height = "120px";
             shirtLine1.current.style.background = "black";
@@ -319,7 +320,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "50px";
             shirtLine3.current.style.background = "#C4C4C4";
         } 
-        if (scrolling > 180 && windowWidth > 1500) {
+        if (scrolling > 180 && windowWidth < 1700 && windowWidth > 1500) {
             shirtLine1.current.style.width = "4px";
             shirtLine1.current.style.height = "50px";
             shirtLine1.current.style.background = "#C4C4C4";
@@ -330,7 +331,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "50px";
             shirtLine3.current.style.background = "#C4C4C4";
         } 
-        if (scrolling > 670 && windowWidth > 1500) {
+        if (scrolling > 670 && windowWidth < 1700 && windowWidth > 1500) {
             shirtLine2.current.style.width = "4px";
             shirtLine2.current.style.height = "50px";
             shirtLine2.current.style.background = "#C4C4C4";
@@ -339,7 +340,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.background = "black";
         }
 
-        if (scrolling < 150 && windowWidth > 1300) {
+        if (scrolling < 150 && windowWidth < 1500 && windowWidth > 1300) {
             shirtLine1.current.style.width = "8px";
             shirtLine1.current.style.height = "120px";
             shirtLine1.current.style.background = "black";
@@ -350,7 +351,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "50px";
             shirtLine3.current.style.background = "#C4C4C4";
         } 
-        if (scrolling > 150 && windowWidth > 1300) {
+        if (scrolling > 150 && windowWidth < 1500 && windowWidth > 1300) {
             shirtLine1.current.style.width = "4px";
             shirtLine1.current.style.height = "50px";
             shirtLine1.current.style.background = "#C4C4C4";
@@ -361,7 +362,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "50px";
             shirtLine3.current.style.background = "#C4C4C4";
         } 
-        if (scrolling > 600 && windowWidth > 1300) {
+        if (scrolling > 600 && windowWidth < 1500 && windowWidth > 1300) {
             shirtLine2.current.style.width = "4px";
             shirtLine2.current.style.height = "50px";
             shirtLine2.current.style.background = "#C4C4C4";
@@ -370,7 +371,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.background = "black";
         }
 
-        if (scrolling < 90 && windowWidth > 1024) {
+        if (scrolling < 90 && windowWidth < 1300 && windowWidth > 1024) {
             shirtLine1.current.style.width = "8px";
             shirtLine1.current.style.height = "120px";
             shirtLine1.current.style.background = "black";
@@ -381,7 +382,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "50px";
             shirtLine3.current.style.background = "#C4C4C4";
         } 
-        if (scrolling > 90 && windowWidth > 1024) {
+        if (scrolling > 90 && windowWidth < 1300 && windowWidth > 1024) {
             shirtLine1.current.style.width = "4px";
             shirtLine1.current.style.height = "50px";
             shirtLine1.current.style.background = "#C4C4C4";
@@ -392,7 +393,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "50px";
             shirtLine3.current.style.background = "#C4C4C4";
         } 
-        if (scrolling > 440 && windowWidth > 1024) {
+        if (scrolling > 440 && windowWidth < 1300 && windowWidth > 1024) {
             shirtLine2.current.style.width = "4px";
             shirtLine2.current.style.height = "50px";
             shirtLine2.current.style.background = "#C4C4C4";
@@ -401,7 +402,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.background = "black";
         }
 
-        if (scrolling < 30 && windowWidth > 768) {
+        if (scrolling < 30 && windowWidth < 1024 && windowWidth > 768) {
             shirtLine1.current.style.width = "6px";
             shirtLine1.current.style.height = "60px";
             shirtLine1.current.style.background = "black";
@@ -412,7 +413,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "40px";
             shirtLine3.current.style.background = "#C4C4C4";
         } 
-        if (scrolling > 30 && windowWidth > 768) {
+        if (scrolling > 30 && windowWidth < 1024 && windowWidth > 768) {
             shirtLine1.current.style.width = "4px";
             shirtLine1.current.style.height = "40px";
             shirtLine1.current.style.background = "#C4C4C4";
@@ -423,7 +424,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "40px";
             shirtLine3.current.style.background = "#C4C4C4";
         } 
-        if (scrolling > 100 && windowWidth > 768) {
+        if (scrolling > 100 && windowWidth < 1024 && windowWidth > 768) {
             shirtLine2.current.style.width = "4px";
             shirtLine2.current.style.height = "40px";
             shirtLine2.current.style.background = "#C4C4C4";
@@ -432,7 +433,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.background = "black";
         }
 
-        if (scrolling < 30 && windowWidth > 600) {
+        if (scrolling < 30 && windowWidth < 768 && windowWidth > 600) {
             shirtLine1.current.style.width = "5px";
             shirtLine1.current.style.height = "40px";
             shirtLine1.current.style.background = "black";
@@ -443,7 +444,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "30px";
             shirtLine3.current.style.background = "#C4C4C4";
         } 
-        if (scrolling > 30 && windowWidth > 600) {
+        if (scrolling > 30 && windowWidth < 768 && windowWidth > 600) {
             shirtLine1.current.style.width = "3px";
             shirtLine1.current.style.height = "30px";
             shirtLine1.current.style.background = "#C4C4C4";
@@ -454,7 +455,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "30px";
             shirtLine3.current.style.background = "#C4C4C4";
         } 
-        if (scrolling > 200 && windowWidth > 600) {
+        if (scrolling > 200 && windowWidth < 768 && windowWidth > 600) {
             shirtLine2.current.style.width = "3px";
             shirtLine2.current.style.height = "30px";
             shirtLine2.current.style.background = "#C4C4C4";
@@ -463,7 +464,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.background = "black";
         }
 
-        if (scrolling < 100 && windowWidth > 486) {
+        if (scrolling < 100 && windowWidth < 600 && windowWidth > 486) {
             shirtLine1.current.style.width = "5px";
             shirtLine1.current.style.height = "30px";
             shirtLine1.current.style.background = "black";
@@ -474,7 +475,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "20px";
             shirtLine3.current.style.background = "#C4C4C4";
         } 
-        if (scrolling > 100 && windowWidth > 486) {
+        if (scrolling > 100 && windowWidth < 600 && windowWidth > 486) {
             shirtLine1.current.style.width = "3px";
             shirtLine1.current.style.height = "20px";
             shirtLine1.current.style.background = "#C4C4C4";
@@ -485,7 +486,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "20px";
             shirtLine3.current.style.background = "#C4C4C4";
         } 
-        if (scrolling > 200 && windowWidth > 486) {
+        if (scrolling > 200 && windowWidth < 600 && windowWidth > 486) {
             shirtLine2.current.style.width = "3px";
             shirtLine2.current.style.height = "20px";
             shirtLine2.current.style.background = "#C4C4C4";
@@ -494,7 +495,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.background = "black";
         }
 
-        if (scrolling < 100 && windowWidth > 250) {
+        if (scrolling < 100 && windowWidth < 486) {
             shirtLine1.current.style.width = "5px";
             shirtLine1.current.style.height = "60px";
             shirtLine1.current.style.background = "black";
@@ -505,7 +506,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "40px";
             shirtLine3.current.style.background = "#C4C4C4";
         } 
-        if (scrolling > 100 && windowWidth > 250) {
+        if (scrolling > 100 && windowWidth < 486) {
             shirtLine1.current.style.width = "3px";
             shirtLine1.current.style.height = "40px";
             shirtLine1.current.style.background = "#C4C4C4";
@@ -516,7 +517,7 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "40px";
             shirtLine3.current.style.background = "#C4C4C4";
         } 
-        if (scrolling > 300 && windowWidth > 250) {
+        if (scrolling > 300 && windowWidth < 486) {
             shirtLine2.current.style.width = "3px";
             shirtLine2.current.style.height = "40px";
             shirtLine2.current.style.background = "#C4C4C4";
