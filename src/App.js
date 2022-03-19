@@ -6,15 +6,16 @@ import Shirts from './components/Shirts/Shirts';
 import Nav from './components/Navbar/Nav';
 import Policy from './components/Policy/Policy';
 import TwistedShirt from './components/TwistedShirts/TwistedShirt';
+import Bag from './components/Bag/Bag';
 
 const App = () => {
     return (
         <>
-            <Nav />
             <Routes>
                 <Route exact path="/" element={<Accessories />} />
                 <Route path="/shirts" element={<Shirts />} />
                 <Route path="/twistedshirt" element={<TwistedShirt />} />
+                <Route path="/shopping-bag" element={<Bag />} />
             </Routes>
             <Footer />
             <Policy />

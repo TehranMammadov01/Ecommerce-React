@@ -3,8 +3,10 @@
 .details-shirt {
     display: flex;
     padding: 65px $mainPaddingRightAndLeft 0 $mainPaddingRightAndLeft;
+    position: relative;
 
     &__lines {
+        position: static;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -17,6 +19,7 @@
             border: none;
             outline: none;
             margin-bottom: 10px;
+            transition: 0.3s;
             &:first-child {
                 width: 8px;
                 height: 120px;
@@ -47,7 +50,9 @@
         }
     }
     &__elements {
+        position: static;
         margin-left: auto;
+        right: $mainPaddingRightAndLeft;
         width: 500px;
         padding-top: 50px;
         &__headers {
@@ -63,29 +68,101 @@
         &__choices {
             display: flex;
             align-items: flex-start;
+            justify-content: space-between;
 
             &__colors {
                 font-size: 16px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
                 p {
                     margin-bottom: 10px;
+                    border-bottom: 2px solid $hoverLineColor;
+                }
+                div {
+                    span {
+                        &:first-child {
+                            cursor: pointer;
+                            font-weight: 500;
+                        }
+                        &:last-child {
+                            cursor: pointer;
+                        }
+                    }
                 }
             }
 
             &__sizes {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
                 font-size: 16px;
-                margin-left: 65px;
-                margin-right: 50px;
                 p {
                     margin-bottom: 10px;
+                    border-bottom: 2px solid $hoverLineColor;
                 }
+                &__choose-size {
+                    display: flex;
+                    align-items: flex-start;
+                    &__items {
+                        margin-right: 5px;
+                        h4 {
+                            font-size: 16px;
+                            font-weight: 500;
+                            margin-bottom: 5px;
+                        }
+                        div {
+                            animation: slide-down-sizes 0.5s ease-out forwards;
+                            display: flex;
+                            flex-direction: column-reverse;
+                            span {
+                                display: block;
+                                cursor: pointer;
+                                margin-top: 3px;
+                                font-size: 14px;
+                            }
+                        }
+                        @keyframes slide-down-sizes {
+                            from {
+                              opacity: 0;
+                              transform: translateY(-10px);
+                            }
+                            to {
+                              opacity: 1;
+                              transform: translateY(0);
+                            }
+                        }
+                    }
+                    &__arrow-img {
+                        margin-top: -1px;
+                        width: 9px;
+                        cursor: pointer;
+                        .default-img {
+                            width: 100%;
+                            transform: rotate(90deg);
+                            margin-bottom: 1px;
+                            transition: all 0.3s;
+                        }
+                        .rotate-img {
+                            transform: rotate(450deg);
+                            transition: all 0.3s;
+                        }
+                    }
+                }
+            }
+            &__price {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                font-size: 16px;
+                p {
+                    margin-bottom: 10px;
+                    border-bottom: 2px solid $hoverLineColor;
+                }
+
                 span {
                     font-weight: 500;
                 }
-            }
-            &__guide {
-                font-size: 14px;
-                padding: 1px 0 3px 0;
-                border-bottom: 2px solid $hoverLineColor;
             }
         }
         &__add-buttons {
@@ -122,33 +199,42 @@
         }
         &__products {
             &__all-details {
-                margin-bottom: 25px;
+                background-color: white;
                 &__header {
                     @extend %displayFlexStyles;
                     border-bottom: 2px solid $blackColor;
                     padding: 5px 0;
+                    background-color: white;
+                    
                     p {
                         font-size: 16px;
                     }
                     div {
                         @extend %displayFlexStyles;
-                        width: 10px;
+                        width: 13px;
+                        padding: 3px 0 3px 3px;
+                        cursor: pointer;
                         img {
                             width: 100%;
                         }
-                        .plusIcon {
-                            display: block;
-                        }
-                        .minusIcon {
-                            display: none;
-                        }
                     }
                 }
+                .subitems-open {
+                    height: 300px;
+                    transition: all 0.4s linear;
+                }
                 &__subitems {
-                    padding: 20px 0 20px 0;
-                    display: block;
+                    padding-bottom: 20px;
+                    height: 0px;
+                    transition: all 0.4s linear;
 
+                    .description-display {
+                        display: block;
+                    }
                     &__descriptions {
+                        display: none;
+                        animation: slide-down 0.5s ease-out forwards;
+                        margin-top: 20px;
                         p {
                             font-size: 14px;
                             color: $blackColor;
@@ -156,9 +242,13 @@
                             margin-bottom: 5px;
                         }
                     }
-                    &__material {
+                    .material-display {
                         display: flex;
+                    }
+                    &__material {
+                        display: none;
                         margin-top: 35px;
+                        animation: slide-down 0.6s ease-out forwards;
                         &__names {
                             p {
                                 font-size: 14px;
@@ -178,6 +268,17 @@
                                 }
                             }
                         }
+                    }
+                }
+
+                @keyframes slide-down {
+                    from {
+                      opacity: 0;
+                      transform: translateY(-30px);
+                    }
+                    to {
+                      opacity: 1;
+                      transform: translateY(0);
                     }
                 }
             }
@@ -201,22 +302,259 @@
     }
 }
 
+@media only screen and (max-width: 1350px) {
+    .details-shirt {
+        &__elements {
+            width: 350px;
+        }
+    }
+}
+
+@media only screen and (max-width: 1230px) {
+    .details-shirt {
+        &__images {
+            width: 46%;
+            margin-right: 40px;
+        }
+    }
+}
+
+@media only screen and (max-width: 1115px) {
+    .details-shirt {
+        &__images {
+            width: 42%;
+            margin-right: 30px;
+        }
+    }
+}
+
 @media only screen and (max-width: 1024px) {
     .details-shirt {
         &__lines {
-            padding: 70px 30px 0 20px;
+            padding: 50px 30px 0 20px;
             button {
                 height: 40px;
                 &:first-child {
-                    height: 80px;
+                    height: 60px;
+                    width: 6px
                 }
             }
         }
         &__images {
             width: 40%;
+            margin-right: 20px;
         }
         &__elements {
-            width: 350px;
+            width: 300px;
+            &__headers {
+                h1 {
+                    font-size: 16px;
+                }
+                p {
+                    font-size: 12px;
+                }
+            }
+            &__choices {
+                p, span, h4 {
+                    font-size: 14px;
+                }
+                &__sizes__choose-size__items {
+                    span {
+                        font-size: 12px !important;
+                    }
+                }
+            }
+            &__add-buttons__bag {
+                button {
+                   font-size: 14px; 
+                }
+            }
+            &__add-buttons__wishlist {
+                button {
+                    font-size: 12px;
+                }
+            }
+            &__products__all-details {
+                &__header {
+                    p {
+                        font-size: 14px;
+                    }
+                }
+                &__subitems {
+                    p {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .details-shirt {
+        &__lines {
+            padding: 20px 15px 0 10px;
+            button {
+                width: 3px;
+                height: 30px;
+                &:first-child {
+                    height: 40px;
+                    width: 5px;
+                }
+            }
+        }
+        &__images {
+            width: 34%;
+        }
+        &__elements {
+            width: 280px;
+            padding-top: 20px;
+            &__headers {
+                p {
+                    margin-bottom: 30px;
+                }
+            }
+            &__add-buttons {
+                margin: 30px 0 35px 0;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .details-shirt {
+        &__lines {
+            button {
+                height: 20px;
+                margin-bottom: 5px;
+                &:first-child {
+                    height: 30px;
+                }
+            }
+        }
+        &__images {
+            width: 31%;
+        }
+        &__elements {
+            width: 220px;
+            &__headers {
+                h1 {
+                    font-size: 14px;
+                }
+            }
+            &__choices {
+                p, span, h4 {
+                    font-size: 12px;
+                }
+            }
+            &__add-buttons__bag {
+                width: 51%;
+                button {
+                   font-size: 12px; 
+                   padding: 10px 0;
+                }
+            }
+            &__add-buttons__wishlist {
+                width: 49%;
+                button {
+                    font-size: 11px;
+                    padding: 10px 0;
+                }
+            }
+            &__products__all-details {
+                &__header {
+                    p {
+                        font-size: 12px;
+                    }
+                    div {
+                        width: 12px;
+                    }
+                }
+                .subitems-open {
+                    height: 280px;
+                }
+                &__subitems {
+                    padding-bottom: 10px;
+                    p {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 486px) {
+    .details-shirt {
+        flex-direction: column;
+        padding: 50px $mainPaddingRightAndLeftMobile 50px $mainPaddingRightAndLeftMobile;
+        border-bottom: 1.5px solid $blackColor;
+        &__lines {
+            position: absolute;
+            padding: 50px 25px 0 0;
+            button {
+                height: 40px;
+                margin-bottom: 5px;
+                &:first-child {
+                    height: 60px;
+                }
+            }
+        }
+        &__images {
+            width: 90%;
+            margin-right: 10px;
+            margin-left: 30px;
+        }
+        &__elements {
+            width: 100%;
+            margin: 30px 0 10px 0;
+            &__headers {
+                h1 {
+                    font-size: 15px;
+                }
+                p {
+                    font-size: 13px;
+                }
+            }
+            &__choices {
+                p, span, h4 {
+                    font-size: 14px;
+                }
+                &__sizes__choose-size__items {
+                    span {
+                        font-size: 13px !important;
+                    }
+                }
+            }
+            &__add-buttons__bag {
+                width: 51%;
+                button {
+                   font-size: 13px; 
+                   padding: 10px 0;
+                }
+            }
+            &__add-buttons__wishlist {
+                width: 49%;
+                button {
+                    font-size: 12px;
+                    padding: 10px 0;
+                }
+            }
+            &__products__all-details {
+                &__header {
+                    p {
+                        font-size: 13px;
+                    }
+                    div {
+                        width: 12px;
+                    }
+                }
+                &__subitems {
+                    p {
+                        font-size: 13px;
+                    }
+                }
+            }
         }
     }
 }

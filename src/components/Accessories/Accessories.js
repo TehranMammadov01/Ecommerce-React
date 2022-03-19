@@ -1,4 +1,5 @@
 import React from 'react';
+import Nav from '../Navbar/Nav';
 import Newsletter from '../Newsletter/Newsletter';
 import Collection from './Collection/Collection';
 import Header from './MainHeader/Header';
@@ -8,6 +9,7 @@ import VideoItem from './VideoSection/VideoItem';
 const MainAllProducts = () => {
     return (
         <>
+            <Nav />
             <Header />
             {/* <VideoItem /> */}
             <Collection />
