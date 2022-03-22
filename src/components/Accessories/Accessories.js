@@ -11,7 +11,7 @@ const MainAllProducts = () => {
         <>
             <Nav />
             <Header />
-            {/* <VideoItem /> */}
+            <VideoItem />
             <Collection />
             <Newness />
             <Newsletter />
