@@ -29,7 +29,7 @@ const VideoItem = () => {
             setMuted(true);
         }
     }
-
+    
     window.setInterval(function () {
         setVideoTime(videoRef.current?.duration);
         setCurrentTime(videoRef.current?.currentTime);
