@@ -2,7 +2,7 @@
 
 .details-shirt {
     display: flex;
-    padding: 65px $mainPaddingRightAndLeft 0 $mainPaddingRightAndLeft;
+    padding: 68px $mainPaddingRightAndLeft 0 $mainPaddingRightAndLeft;
     position: relative;
 
     &__lines {
@@ -487,8 +487,7 @@
 @media only screen and (max-width: 486px) {
     .details-shirt {
         flex-direction: column;
-        padding: 50px $mainPaddingRightAndLeftMobile 50px $mainPaddingRightAndLeftMobile;
-        border-bottom: 1.5px solid $blackColor;
+        padding: 50px $mainPaddingRightAndLeftMobile 60px $mainPaddingRightAndLeftMobile;
         &__lines {
             position: absolute;
             padding: 50px 25px 0 0;

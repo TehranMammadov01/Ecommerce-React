@@ -12,9 +12,9 @@ import './ShirtCategories.scss';
 import { useEffect, useRef } from 'react';
 
 const ShirtCategories = () => {
+    const part3Hover = useRef();
     const part4Hover = useRef();
     const part8Hover = useRef();
-    const part3Hover = useRef();
 
     const windowWidth = window.innerWidth;
 

@@ -7,14 +7,46 @@ import cancelIcon from '../../assets/images/cancel.png';
 import searchIcon from '../../assets/images/search.png';
 import rightArrow from '../../assets/images/right-arrow.png';
 
-const Nav = (props) => {
+const Nav = () => {
+    const [newProduct, setNewProduct] = useState([]);
     const [menuMobileOpen, setMenuMobileOpen] = useState(true);
     const navbarResponsiveRef = useRef();
 
     const showResponsiveNavbar = () => {
         navbarResponsiveRef.current.classList.toggle("navbar-container-responsive");
         setMenuMobileOpen(!menuMobileOpen);
+        if (menuMobileOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "visible";
+        }
     }
+
+    useEffect(() => {
+        const checkClickOutside = (e) => {
+            if (!menuMobileOpen) {
+                setMenuMobileOpen(!menuMobileOpen);
+                document.body.style.overflow = "visible";
+                navbarResponsiveRef.current.classList.toggle("navbar-container-responsive");
+            }
+        }
+        document.addEventListener("click", checkClickOutside);
+        return () => {
+            document.removeEventListener("click", checkClickOutside);
+        }
+    }, [!menuMobileOpen])
+
+    useEffect(() => {
+        let timer = setTimeout(() => {
+            const productDetails = JSON.parse(localStorage.getItem('productData'));
+            if (productDetails) {
+                setNewProduct(productDetails);
+            }
+        }, 100)
+        return () => {
+            clearTimeout(timer);
+        }
+    },[newProduct])
     
     return (
         <nav>
@@ -24,45 +56,45 @@ const Nav = (props) => {
                 </div>
                 <div className='navbar-container__list' ref={navbarResponsiveRef} >
                     <Link to="/">
-                        <div className='navbar-container__list__item'>
+                        <div onClick={showResponsiveNavbar} className='navbar-container__list__item'>
                             <p>ALL</p>
                             <div className='navbar-container__list__item__mobile-right-arrow'><img src={rightArrow} alt="" /></div>
                         </div>
                     </Link>
                     <Link to="/twistedshirt">
-                        <div className='navbar-container__list__item'>
+                        <div onClick={showResponsiveNavbar} className='navbar-container__list__item'>
                             <p>WOMEN</p>
                             <div className='navbar-container__list__item__mobile-right-arrow'><img src={rightArrow} alt="" /></div>
                         </div>
                     </Link>
                     <Link to="/shirts">
-                        <div className='navbar-container__list__item'>
+                        <div onClick={showResponsiveNavbar} className='navbar-container__list__item'>
                             <p>MEN</p>
                             <div className='navbar-container__list__item__mobile-right-arrow'><img src={rightArrow} alt="" /></div>
                         </div>
                     </Link>
                     <Link to="/search">
-                        <div className='navbar-container__list__item'>
+                        <div onClick={showResponsiveNavbar} className='navbar-container__list__item'>
                             <p>SEARCH</p>
                             <div className='navbar-container__list__item__mobile-right-arrow'><img src={rightArrow} alt="" /></div>
                         </div>
                     </Link>
                     <Link to="/wishlist">
-                        <div className='navbar-container__list__wishlist navbar-container__list__item'>
+                        <div onClick={showResponsiveNavbar} className='navbar-container__list__wishlist navbar-container__list__item'>
                             <p>WISHLIST</p>
-                            <p>[0]</p>
+                            <p>[{newProduct.length}]</p>
                             <div className='navbar-container__list__item__mobile-right-arrow'><img src={rightArrow} alt="" /></div>
                         </div>
                     </Link>
                     <Link to="/shopping-bag">
-                        <div className='navbar-container__list__bag navbar-container__list__item'>
+                        <div onClick={showResponsiveNavbar} className='navbar-container__list__bag navbar-container__list__item'>
                             <p>BAG</p>
-                            {((!props.removeButtonActive && props.weHaveProduct) || props.addToBagButtonActive || props.haveProduct) ? <div><img src={smallBagIcon} alt="" /></div> : ''}
+                            {newProduct.length > 0 ? <div><img src={smallBagIcon} alt="" /></div> : ''}
                             <div className='navbar-container__list__item__mobile-right-arrow'><img src={rightArrow} alt="" /></div>
                         </div>
                     </Link>
                     <Link to="/login">
-                        <div className='navbar-container__list__item'>
+                        <div onClick={showResponsiveNavbar} className='navbar-container__list__item'>
                             <p>LOG IN</p>
                             <div className='navbar-container__list__item__mobile-right-arrow'><img src={rightArrow} alt="" /></div>
                         </div>

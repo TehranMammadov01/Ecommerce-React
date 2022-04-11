@@ -1,0 +1,282 @@
+@import '../../../styles/styles.scss';
+
+.related-shirts {
+    padding: 120px $mainPaddingRightAndLeft 0 $mainPaddingRightAndLeft;
+
+    &__header {
+        font-size: $mainTitleFontSize;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    &__section {
+        display: flex;
+        flex-wrap: wrap;
+
+        &__part {
+            position: relative;
+            margin-bottom: 130px;
+            width: 26%;
+
+            &__image {
+                width: 100%;
+                height: 500px;
+                
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .hover-img {
+                    display: none;
+                    animation: image-visible 0.3s linear forwards;
+                }
+
+                .default-img {
+                    display: block;
+                }
+            }
+
+            &__description {
+                position: absolute;
+                bottom: 10px;
+                font-size: 14px;
+                color: black;
+                transition: all 0.3s linear;
+                width: 100%;
+                text-align: center;
+                padding: 0 10px;
+            }
+
+            &__sizes {
+                display: none;
+                justify-content: space-between;
+                padding: 45px 24% 0 24%;
+                animation: slide-sizes 0.3s ease-out forwards;
+
+                span {
+                    font-size: 14px;
+                    padding: 5px 5px;
+                    color: black;
+                    cursor: pointer;
+                }
+            }
+
+            &:hover .hover-img {
+                display: block;
+                border: 2px solid black;
+            }
+
+            &:hover .default-img {
+                display: none;
+            }
+
+            &:hover &__description {
+                bottom: -30px;
+            }
+
+            &:hover &__sizes {
+                display: flex;
+            }
+
+            @keyframes slide-sizes {
+                from {
+                  opacity: 0;
+                  transform: translateY(-50px);
+                }
+                to {
+                  opacity: 1;
+                  transform: translateY(0);
+                }
+            }
+            @keyframes image-visible {
+                from {
+                  transform: scale(0.95);
+                }
+                to {
+                  transform: scale(1);
+                }
+            }
+        }
+
+        #part-1 {
+            width: 48%;
+        }
+
+        #part-2:hover, #part-3:hover {
+            width: 48%;
+        }
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    .related-shirts {
+        &__section__part__image {
+            height: 400px;
+        }
+        &__section__part {
+            margin-bottom: 110px;
+            &:hover &__description {
+                bottom: 30px;
+            }
+        }
+        &__section__part__sizes {
+            animation: slide-sizes-1400px 0.3s ease-out forwards;
+        }
+
+        @keyframes slide-sizes-1400px {
+            from {
+              opacity: 0;
+              transform: translateY(10px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .related-shirts {
+        &__section__part {
+            margin-bottom: 100px;
+
+            &:hover &__description {
+                bottom: 20px;
+            }
+            &__image {
+                height: 300px;
+            }
+            &__description {
+                font-size: 13px;
+            }
+            &__sizes {
+                padding: 45px 15% 0 15%;
+                animation: slide-sizes-1024px 0.3s ease-out forwards;
+            }
+            @keyframes slide-sizes-1024px {
+                from {
+                  opacity: 0;
+                  transform: translateY(10px);
+                }
+                to {
+                  opacity: 1;
+                  transform: translateY(15px);
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 920px) {
+    .related-shirts {
+        &__header {
+            font-size: 22px;
+        }
+        &__section__part__image {
+            height: 250px;
+        }
+        &__section__part__description {
+            font-size: 12px;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .related-shirts {
+        &__header {
+            font-size: 20px;
+        }
+        &__section__part {
+            margin-bottom: 70px;
+            &:hover &__description {
+                bottom: 10px;
+            }
+            &__image {
+                height: 200px;
+            }
+            &__description {
+                font-size: 10px;
+                bottom: 0;
+            }
+            &__sizes {
+                padding: 25px 15% 0 15%;
+                span {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 666px) {
+    .related-shirts {
+        &__section__part__sizes {
+            padding: 20px 5% 0 5%;
+        }
+    }
+}
+
+@media only screen and (max-width: 590px) {
+    .related-shirts {
+        &__header {
+            font-size: 18px;
+        }
+    }
+}
+
+@media only screen and (max-width: 486px) {
+    .related-shirts {
+        padding: 0 0 10px 0;
+        &__section {
+            flex-direction: column;
+            &__part {
+                width: 100%;
+                &__image {
+                    height: 450px;
+                    
+                    img {
+                        border-top: 2px solid black;
+                        border-bottom: 2px solid black;
+                    }
+                }
+                &__description {
+                    position: relative;
+                    margin-top: 30px;
+                    font-size: 16px;
+                }
+                &__description:not(:hover) {
+                    bottom: 10px;
+                }
+                &__sizes {
+                    display: flex;
+                    animation: none;
+                    text-align: center;
+                    padding: 5px 10% 0 10%;
+                    span {
+                        font-size: 16px;
+                    }
+                }
+                &:hover .hover-img {
+                    border-top: 2px solid black;
+                    border-bottom: 2px solid black;
+                    border-left: none;
+                    border-right: none;
+                }
+            }
+            #part-1 {
+                width: 100%;
+            }
+            #part-2:hover, #part-3:hover {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .related-shirts__section__part__image {
+        height: 350px;
+    }
+}

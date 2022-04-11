@@ -1,36 +1,57 @@
 import { useEffect, useState } from 'react';
 import arrow from '../../../assets/images/right-arrow.png';
-import Nav from '../../Navbar/Nav';
-import TwistedNavigation from '../../TwistedShirts/TwistNav/TwistedNavigation';
 import './ShoppingBag.scss';
 
 const ShoppingBag = () => {
-    const [haveProduct, setHaveProduct] = useState(true);
-    const [productIndex, setProductIndex] = useState('');
     const [activeRemove, setActiveRemove] = useState(false);
-    const [newProduct, setNewProduct] = useState('');
+    const [newProduct, setNewProduct] = useState([]);
+
+    let totalProductPrice = newProduct.reduce((prev, current) => {
+        return prev + +current.priceData
+    }, 0);
+    let salesTax = (totalProductPrice * 10) / 100;
+    let shippingCost;
+    if (totalProductPrice > 2000) {
+        shippingCost = (totalProductPrice * 1) / 100;
+    } else {
+        shippingCost = 0;
+    }
+    let estimatedPrice = totalProductPrice + salesTax + shippingCost;
 
     useEffect(() => {
-        const productDetails = JSON.parse(localStorage.getItem('productData'));
-        if (productDetails) {
-            productDetails.map((product, index) => {
-                setNewProduct(product);
-                setProductIndex(index);
-            })
-        } else {
-            setHaveProduct(false)
+        let timer = setTimeout(() => {
+            const productDetails = JSON.parse(localStorage.getItem('productData'));
+            if (productDetails ) {
+                setNewProduct(productDetails);
+            }
+        }, 100)
+        return () => {
+            clearTimeout(timer);
         }
     },[])
 
-    const removeProductFromBag = (() => {
-        localStorage.removeItem('productData');
+    useEffect(() => {
+        if (activeRemove) {
+            let timer = setTimeout(() => {
+                const productDetails = JSON.parse(localStorage.getItem('productData'));
+                if (productDetails) {
+                    setNewProduct(productDetails);
+                }
+            }, 300)
+            return () => {
+                clearTimeout(timer);
+            }
+        }
+    },[activeRemove, newProduct])
+
+    const removeProductFromBag = (selectProductId) => {
+        const filteredNewProduct = newProduct.filter(product => product.productId !== selectProductId);
+        localStorage.setItem('productData', JSON.stringify(filteredNewProduct));
         setActiveRemove(true);
-    })
+    }
 
     return (
         <>
-            <Nav removeButtonActive={activeRemove} weHaveProduct={haveProduct} />
-            <TwistedNavigation />
             <div className='shopping-bag'>
                 <div className='shopping-bag__titles'>
                     <h1>SHOPPING BAG</h1>
@@ -38,50 +59,52 @@ const ShoppingBag = () => {
                 </div>
                 <div className='shopping-bag__sections'>
                     <div className='shopping-bag__sections__products'>
-                        {(!activeRemove && haveProduct) ? (
-                            <div className='shopping-bag__sections__products__all-data'>
-                                <div className='shopping-bag__sections__products__all-data__photo'>
-                                    <img src={newProduct.imageUrl} alt="" />
-                                </div>
-                                <div className='shopping-bag__sections__products__all-data__about-product'>
-                                    <div className='shopping-bag__sections__products__all-data__about-product__title-and-price'>
-                                        <h1>{newProduct.titleData}</h1>
-                                        <span>{newProduct.priceData}<span>$</span></span>
+                        {(newProduct.length !== 0) ? (
+                            newProduct.map((productItem, index) => (
+                                <div className='shopping-bag__sections__products__all-data' key={index}>
+                                    <div className='shopping-bag__sections__products__all-data__photo'>
+                                        <img src={productItem.imageUrl} alt="" />
                                     </div>
-                                    <p className='shopping-bag__sections__products__all-data__about-product__description'>{newProduct.descriptionData}</p>
-                                    <div className='shopping-bag__sections__products__all-data__about-product__main-chosens'>
-                                        <div className='shopping-bag__sections__products__all-data__about-product__main-chosens__names'>
-                                            <p>COLOR</p>
-                                            <p>SIZE</p>
-                                            <p>QUANTITY</p>
+                                    <div className='shopping-bag__sections__products__all-data__about-product'>
+                                        <div className='shopping-bag__sections__products__all-data__about-product__title-and-price'>
+                                            <h1>{productItem.titleData}</h1>
+                                            <span>{productItem.priceData}<span>$</span></span>
                                         </div>
-                                        <div className='shopping-bag__sections__products__all-data__about-product__main-chosens__values'>
-                                            <p>{newProduct.colorName}</p>
-                                            <div className='shopping-bag__sections__products__all-data__about-product__main-chosens__values__sizes'>
-                                                <div>
-                                                    <h4>{newProduct.sizeData}</h4>
-                                                    {/* <div className='shopping-bag__sections__products__all-data__about-product__main-chosens__values__sizes__change-size'>
-                                                        <span>XXS</span><span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span><span>XXL</span>
-                                                    </div> */}
+                                        <p className='shopping-bag__sections__products__all-data__about-product__description'>{productItem.descriptionData}</p>
+                                        <div className='shopping-bag__sections__products__all-data__about-product__main-chosens'>
+                                            <div className='shopping-bag__sections__products__all-data__about-product__main-chosens__names'>
+                                                <p>COLOR</p>
+                                                <p>SIZE</p>
+                                                <p>QUANTITY</p>
+                                            </div>
+                                            <div className='shopping-bag__sections__products__all-data__about-product__main-chosens__values'>
+                                                <p>{productItem.colorName}</p>
+                                                <div className='shopping-bag__sections__products__all-data__about-product__main-chosens__values__sizes'>
+                                                    <div>
+                                                        <h4>{productItem.sizeData}</h4>
+                                                        {/* <div className='shopping-bag__sections__products__all-data__about-product__main-chosens__values__sizes__change-size'>
+                                                            <span>XXS</span><span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span><span>XXL</span>
+                                                        </div> */}
+                                                    </div>
+                                                    <div className='shopping-bag__sections__products__all-data__about-product__main-chosens__values__sizes__change-click'>
+                                                        <img src={arrow} alt="" />
+                                                    </div>
                                                 </div>
-                                                <div className='shopping-bag__sections__products__all-data__about-product__main-chosens__values__sizes__change-click'>
-                                                    <img src={arrow} alt="" />
+                                                <div className='shopping-bag__sections__products__all-data__about-product__main-chosens__values__counter'>
+                                                    <p>1</p>
+                                                    <div className='shopping-bag__sections__products__all-data__about-product__main-chosens__values__counter__click-img'>
+                                                        <img src={arrow} alt="" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div className='shopping-bag__sections__products__all-data__about-product__main-chosens__values__counter'>
-                                                <p>1</p>
-                                                <div className='shopping-bag__sections__products__all-data__about-product__main-chosens__values__counter__click-img'>
-                                                    <img src={arrow} alt="" />
-                                                </div>
-                                            </div>
+                                        </div>
+                                        <div className='shopping-bag__sections__products__all-data__about-product__remove-product'>
+                                            <span onClick={() => removeProductFromBag(productItem.productId)}>REMOVE</span>
                                         </div>
                                     </div>
-                                    <div className='shopping-bag__sections__products__all-data__about-product__remove-product'>
-                                        <span onClick={removeProductFromBag}>REMOVE</span>
-                                    </div>
                                 </div>
-                            </div>
-                        ) : <p className='shopping-bag__sections__products__emty-bag'>YOUR BAG IS EMPTY</p>}
+                            ))
+                        ) : (<p className='shopping-bag__sections__products__emty-bag'>YOUR BAG IS EMPTY</p>)}
                     </div>
                     <div className='shopping-bag__sections__order-summary'>
                         <h1 className='shopping-bag__sections__order-summary__heading'>ORDER SUMMARY</h1>
@@ -92,11 +115,11 @@ const ShoppingBag = () => {
                             </div>
                             <div>
                                 <p>Shipping cost</p>
-                                <span>0$</span>
+                                <span>{shippingCost}<span>$</span></span>
                             </div>
                             <div>
                                 <p>Sales tax</p>
-                                <span>378<span>$</span></span>
+                                <span>{salesTax}<span>$</span></span>
                             </div>
                             <div>
                                 <p>Promotional code</p>
@@ -105,7 +128,7 @@ const ShoppingBag = () => {
                             </div>
                             <div>
                                 <p>Estimated total</p>
-                                <span>1154<span>$</span></span>
+                                <span>{estimatedPrice}<span>$</span></span>
                             </div>
                         </div>
                         <div className='shopping-bag__sections__order-summary__checkout'>

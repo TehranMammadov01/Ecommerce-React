@@ -13,7 +13,7 @@ const Navigation = () => {
         hoverSubheaderModal.current.style.display = "none";
     }
 
-    return (
+    return ( 
         <div className='navigation'>
             <div className='navigation__headers'>
                 <Link to="/shirts"><p onMouseOver={hoverNavigationHeader} onMouseOut={hoverOutNavigationHeader}>MEN</p></Link>

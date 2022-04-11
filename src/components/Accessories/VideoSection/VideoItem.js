@@ -1,5 +1,5 @@
 import './VideoItem.scss';
-import videoItem from '../../../assets/images/video-react.mp4';
+import videoItem from '../../../assets/images/balenciaga-fashion.mp4';
 import { useEffect, useRef, useState } from 'react';
 
 const VideoItem = () => {
@@ -29,12 +29,26 @@ const VideoItem = () => {
             setMuted(true);
         }
     }
-    
-    window.setInterval(function () {
-        setVideoTime(videoRef.current?.duration);
-        setCurrentTime(videoRef.current?.currentTime);
-        setProgress((videoRef.current?.currentTime / videoTime) * 100)
-    }, 1000);
+    useEffect(() => {
+        let interval = window.setInterval(function () {
+            setVideoTime(videoRef.current?.duration);
+            setCurrentTime(videoRef.current?.currentTime);
+            setProgress((videoRef.current?.currentTime / videoTime) * 100)
+        }, 1000);
+        return () => {
+            clearInterval(interval);
+        }
+    },[currentTime])
+
+    // const onChange = ({ screen }) => {
+    //     setDimensions(screen);
+    // };  
+    // useEffect(() => {
+    //     Dimensions.addEventListener('change', onChange);
+    //     return () => {
+    //         Dimensions.removeEventListener('change', onChange);
+    //     };
+    // },[]);
 
     return (
         <div className='video-container'>

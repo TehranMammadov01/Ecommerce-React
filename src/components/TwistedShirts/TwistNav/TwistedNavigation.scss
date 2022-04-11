@@ -1,0 +1,80 @@
+@import '../../../styles/styles.scss';
+
+.twisted-navigation {
+    position: relative;
+
+    &__headers {
+        display: flex;
+        padding: 0 $mainPaddingRightAndLeft;
+        border-bottom: 2px solid $blackColor;
+        z-index: 1;
+
+        p {
+            font-size: 14px;
+            margin-right: 70px;
+            cursor: pointer;
+            padding: 15px 0;
+            color: black;
+            // border: 1px solid red;
+        }
+        p:hover {
+            font-weight: 500;
+        }
+    }
+    &__hover {
+        padding: 27px $mainPaddingRightAndLeft 21px $mainPaddingRightAndLeft;
+        border-bottom: 2px solid $blackColor;
+        animation: hover-slide-down 0.2s ease-out forwards;
+        display: none;
+        justify-content: space-between;
+        align-items: center;
+        position: absolute;
+        top: 48px;
+        background: white;
+        width: 100%;
+        z-index: 999;
+
+        &__sub-headers {
+            display: flex;
+
+            p {
+                font-size: 14px;
+                cursor: pointer;
+            }
+            p:hover {
+                opacity: 0.6;
+            }
+        }
+        &__filter {
+            font-size: 15px;
+            cursor: pointer;
+        }
+    }
+
+    @keyframes hover-slide-down {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .twisted-navigation {
+        &__headers {
+            p {
+                margin-right: 40px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 486px) {
+    .twisted-navigation {
+        display: none;
+    }
+}

@@ -19,8 +19,12 @@
             @extend %displayFlexStyles;
             padding: 0 20px 15px 20px;
 
-            p {
-                color: $emailColor;
+            input {
+                color: black;
+                font-size: 16px;
+                border: none;
+                background: transparent;
+                width: 85%;
             }
 
             &__arrow {
@@ -75,7 +79,7 @@
             width: 90%;
 
             &__email {
-                p {
+                input {
                     font-size: 14px;
                 }
                 &__arrow {

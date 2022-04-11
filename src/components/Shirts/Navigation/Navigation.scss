@@ -7,6 +7,7 @@
         display: flex;
         padding: 0 $mainPaddingRightAndLeft;
         border-bottom: 2px solid $blackColor;
+        z-index: 1;
 
         p {
             font-size: 14px;
@@ -30,6 +31,7 @@
         top: 48px;
         background: white;
         width: 100%;
+        z-index: 999;
 
         &__sub-headers {
             display: flex;

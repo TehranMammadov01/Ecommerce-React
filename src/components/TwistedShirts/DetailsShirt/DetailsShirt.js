@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import Nav from '../../Navbar/Nav';
-import TwistedNavigation from '../TwistNav/TwistedNavigation';
 import frontPerson from '../../../assets/images/shirts/front-person.png';
 import sidePerson from '../../../assets/images/shirts/side-person.png';
 import backPerson from '../../../assets/images/shirts/back-person.png';
@@ -12,13 +10,11 @@ import arrow from '../../../assets/images/right-arrow.png';
 import './DetailsShirt.scss';
 
 const DetailsShirt = () => {
-    const [haveProduct, setHaveProduct] = useState(false);
-    const [prevProduct, setPrevProduct] = useState('');
-    const [addToBagActive, setAddToBagActive] = useState(false);
     const [isOpenSubitem1, setIsOpenSubitem1] = useState(true);
     const [isOpenSubitem2, setIsOpenSubitem2] = useState(true);
     const [isOpenSubitem3, setIsOpenSubitem3] = useState(true);
     const [sizeModalOpen, setSizeModalOpen] = useState(false);
+    const allData = [];
 
     const defaultColor = useRef();
     const choosenColor = useRef();
@@ -31,12 +27,14 @@ const DetailsShirt = () => {
         defaultColor.current.style.fontWeight = 500;
         choosenColor.current.style.fontWeight = 400;
         setColor(defaultColor.current.textContent);
+        setId(Math.random().toString());
     }
 
     const changeWeight2 = () => {
         defaultColor.current.style.fontWeight = 400;
         choosenColor.current.style.fontWeight = 500;
         setColor(choosenColor.current.textContent);
+        setId(Math.random().toString());
     }
     
     const openSubitemsModalFirst = () => {
@@ -55,6 +53,7 @@ const DetailsShirt = () => {
     const productPrice = useRef();
     const productImage = useRef();
 
+    const [id, setId] = useState();
     const [title, setTitle] = useState();
     const [description, setDescription] = useState();
     const [color, setColor] = useState();
@@ -62,23 +61,35 @@ const DetailsShirt = () => {
     const [price, setPrice] = useState();
     const [image, setImage] = useState();
 
-    const productData = [
-        {
-            titleData: title,
-            descriptionData: description,
-            colorName: color,
-            sizeData: size,
-            priceData: price,
-            imageUrl: image
-        } 
-    ];
+    const newProductData = {
+        productId: id,
+        titleData: title,
+        descriptionData: description,
+        colorName: color,
+        sizeData: size,
+        priceData: price,
+        imageUrl: image
+    } 
+    allData.push(newProductData);
 
     useEffect(() => {
+        const prevProductData = JSON.parse(localStorage.getItem('productData'));
+        if (prevProductData) {
+            prevProductData.map(prevProductItem => {
+                if (prevProductItem.colorName !== newProductData.colorName || prevProductItem.sizeData !== newProductData.sizeData) {
+                    allData.push(prevProductItem);
+                }
+            }) 
+        }
+    })
+
+    useEffect(() => {
+        setId(Math.random().toString());
         setTitle(productTitle.current.textContent);
         setDescription(productDescription.current.textContent);
         setColor(defaultColor.current.textContent);
         setPrice(productPrice.current.textContent);
-        setImage(productImage.current.src)
+        setImage(productImage.current.src);
     },[])
 
     useEffect(() => {
@@ -89,21 +100,8 @@ const DetailsShirt = () => {
     },[() => {}])
 
     const dataAddToStorage = () => {
-        localStorage.setItem('productData', JSON.stringify(productData));
-        setAddToBagActive(true);
+        localStorage.setItem('productData', JSON.stringify(allData));
     }
-
-    useEffect(() => {
-        const productDetails = JSON.parse(localStorage.getItem('productData'));
-        if (productDetails) {
-            productDetails.map(product => {
-                setPrevProduct(product);
-            })
-            setHaveProduct(true)
-        } else {
-            setHaveProduct(false)
-        }
-    },[])
 
     const sizeItem1 = useRef();
     const sizeItem2 = useRef();
@@ -115,24 +113,31 @@ const DetailsShirt = () => {
 
     const changeSizeGuide1 = () => {
         productSize.current.textContent = sizeItem1.current.textContent;
+        setId(Math.random().toString());
     }
     const changeSizeGuide2 = () => {
         productSize.current.textContent = sizeItem2.current.textContent;
+        setId(Math.random().toString());
     }
     const changeSizeGuide3 = () => {
         productSize.current.textContent = sizeItem3.current.textContent;
+        setId(Math.random().toString());
     }
     const changeSizeGuide4 = () => {
         productSize.current.textContent = sizeItem4.current.textContent;
+        setId(Math.random().toString());
     }
     const changeSizeGuide5 = () => {
         productSize.current.textContent = sizeItem5.current.textContent;
+        setId(Math.random().toString());
     }
     const changeSizeGuide6 = () => {
         productSize.current.textContent = sizeItem6.current.textContent;
+        setId(Math.random().toString());
     }
     const changeSizeGuide7 = () => {
         productSize.current.textContent = sizeItem7.current.textContent;
+        setId(Math.random().toString());
     }
 
     const windowWidth = window.screen.width;
@@ -308,7 +313,6 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "120px";
             shirtLine3.current.style.background = "black";
         }
-
         if (scrolling < 180 && windowWidth < 1700 && windowWidth > 1500) {
             shirtLine1.current.style.width = "8px";
             shirtLine1.current.style.height = "120px";
@@ -370,7 +374,6 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "120px";
             shirtLine3.current.style.background = "black";
         }
-
         if (scrolling < 90 && windowWidth < 1300 && windowWidth > 1024) {
             shirtLine1.current.style.width = "8px";
             shirtLine1.current.style.height = "120px";
@@ -401,7 +404,6 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "120px";
             shirtLine3.current.style.background = "black";
         }
-
         if (scrolling < 30 && windowWidth < 1024 && windowWidth > 768) {
             shirtLine1.current.style.width = "6px";
             shirtLine1.current.style.height = "60px";
@@ -432,7 +434,6 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "60px";
             shirtLine3.current.style.background = "black";
         }
-
         if (scrolling < 30 && windowWidth < 768 && windowWidth > 600) {
             shirtLine1.current.style.width = "5px";
             shirtLine1.current.style.height = "40px";
@@ -463,7 +464,6 @@ const DetailsShirt = () => {
             shirtLine3.current.style.height = "40px";
             shirtLine3.current.style.background = "black";
         }
-
         if (scrolling < 100 && windowWidth < 600 && windowWidth > 486) {
             shirtLine1.current.style.width = "5px";
             shirtLine1.current.style.height = "30px";
@@ -529,8 +529,6 @@ const DetailsShirt = () => {
 
     return (
         <>
-            <Nav addToBagButtonActive={addToBagActive} haveProduct={haveProduct} />
-            <TwistedNavigation />
             <div className='details-shirt'>
                 <div className='details-shirt__lines' ref={linesBehavior}>
                     <button ref={shirtLine1}></button>

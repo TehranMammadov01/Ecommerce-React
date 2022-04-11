@@ -9,7 +9,7 @@ const Newsletter = () => {
                 <div className='newsletter-container__div'>
                     <p className='newsletter-container__div__header'>NEWSLETTER</p>
                     <div className='newsletter-container__div__email'>
-                        <p>EMAIL</p>
+                        <input type="text" placeholder="EMAIL"/>
                         <div className='newsletter-container__div__email__arrow'>
                             <img src={arrow} alt="" />
                         </div>

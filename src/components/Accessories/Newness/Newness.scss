@@ -9,46 +9,61 @@
         text-align: center;
     }
 
-    &__container {
-        @extend %displayFlexStyles;
-
-        &__main-div {
-            width: 25%;
-
-            &__image {
-                width: 100%;
-                transition: all 2s linear forwards;
-
+    &__main-div {
+        &__image {
+            display: flex;
+            align-items: center;
+            position: relative;
+            &__img-div {
+                width: 25%;
                 img {
                     width: 100%;
-                    margin-bottom: -3px;
+                    margin-bottom: -4px;
                 }
             }
-            p {
-                margin: 10px 0 20px 0;
-                text-align: center;
-                font-size: 14px;
-                color: transparent;
-                transition: all 2s linear forwards;
+            &__overlay-hover-main {
+                position: absolute;
+                height: 100%;
+                width: 25%;
+                right: 0%;
+                border: 2px solid transparent;
+                transition: .2s linear;
+                z-index: 1;
             }
-            &__sizes {
-                @extend %displayFlexStyles;
-                span {
-                    font-size: 14px;
-                    color: transparent;
-                    transition: all 2s linear forwards;
-                }
+            #overlay-main-0 {
+                left: 0%;
             }
-            
+            #overlay-main-1 {
+                left: 25%;
+            }
+            #overlay-main-2 {
+                left: 50%;
+            }
+            #overlay-main-3 {
+                left: 75%;
+            }
         }
 
-        &__main-div:hover .newness-section__container__main-div__image {
-            border: 2px solid black;
-        }
-        &__main-div:hover p,
-        &__main-div:hover .newness-section__container__main-div__sizes span {
-            color: black;
-        }
+        &__elements {
+            display: flex;
+            align-items: center;
+            &__section {
+                width: 25%;
+                opacity: 0;
+                transition: all .3s linear;
+                p {
+                    margin: 10px 0 20px 0;
+                    text-align: center;
+                    font-size: 14px;
+                }
+                &__sizes {
+                    @extend %displayFlexStyles;
+                    span {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }  
     }
 
     &__mobile {
@@ -67,7 +82,7 @@
             font-size: 22px;
         }
 
-        &__container__main-div__sizes {
+        &__main-div__elements__section__sizes {
             span {
                 font-size: 13px;
             }
@@ -80,7 +95,7 @@
         &__header {
             font-size: 20px;
         }
-        &__container__main-div {
+        &__main-div__elements__section {
             p {
                 margin-bottom: 10px;
             }
@@ -96,7 +111,7 @@
         &__header {
             font-size: 18px;
         }
-        &__container__main-div {
+        &__main-div__elements__section {
             p, span {
                 font-size: 12px;
             }
@@ -112,7 +127,7 @@
             text-align: start;
             margin-left: $mainPaddingRightAndLeftMobile;
         }
-        &__container {
+        &__main-div {
             display: none;
         }
         &__mobile {
@@ -123,13 +138,17 @@
                 overflow: hidden;
                 &__image-slider {
                     white-space: nowrap;
+                    transition: 0.7s;
                     // overflow: scroll;
+                    // scroll-behavior: smooth;
+                    // &::-webkit-scrollbar {
+                    //     display: none;
+                    // }
 
                     &__img {
                         width: 100%;
                         display: inline-block;
                         border-bottom: 2px solid $blackColor;
-                        // overflow: scroll;
 
                         img {
                             width: 100%;
@@ -137,9 +156,6 @@
                         }
                     }
                 }
-                // &__image-slider::-webkit-scrollbar {
-                //     display: none;
-                // }
 
                 &__control-arrow {
                     display: flex;
@@ -184,6 +200,7 @@
                     outline: none;
                     opacity: 0.2;
                     cursor: pointer;
+                    transition: 0.7s;
                 }
 
                 .active {
